@@ -43,6 +43,23 @@ public class InputParserTest {
         assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
     }
 
+    @Test
+    @DisplayName("should check for case insensitivity")
+    void isCaseInsensitive() {
+        InputParser classUnderTest = new CommaAndWhitespaceSplittingInputParser();
+        Set<String> keywords = new  HashSet<>(Arrays.asList("Rindfleisch", "Eisbergsalat", "Tomate", "Ketchup", "Mayo", "Avocado"));
+        String inputLine = "Ich haette gerne einen Burger mit RINDFleisch mit MayO, eisbergsalat mit mayo, Tomate mit Mayo, Ketchup, und Mayo";
+        var expected = Map.of(
+                "Rindfleisch", 1,
+                "Eisbergsalat", 1,
+                "Tomate", 1,
+                "Ketchup", 1,
+                "Mayo", 4,
+                "Avocado", 0);
+        assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
+    }
+
+
 }
 
 
