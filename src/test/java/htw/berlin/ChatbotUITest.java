@@ -63,7 +63,7 @@ public class ChatbotUITest {
         ));
         ChatbotUI ui = new ChatbotUI(null, null, parser);
 
-        var expected = Arrays.asList(100, 700);
+        var expected = Arrays.asList(700, 100);
         var actual = ui.articleIdsFromOrder("Ich haette gerne einen Burger mit Tomate");
         assertEquals(expected, actual);
     }
