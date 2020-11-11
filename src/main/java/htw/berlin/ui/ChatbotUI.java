@@ -37,6 +37,24 @@ public class ChatbotUI {
     public List<Integer> articleIdsFromOrder(String inputLine) {
         Set<String> keywords = Menu.getAllArticles().keySet();
         // TODO (2) dann hier mit countKeywords Benutzung implementieren
-        return Collections.emptyList();
+        List<Integer> idsReadFromOrder = new ArrayList<>();
+
+        Map<String,Integer> keywordsMapToGetArticles;
+
+        Map<String,Integer> articlesToGet;
+//find keywords in order
+        keywordsMapToGetArticles = parser.countKeywords(inputLine, keywords);
+        articlesToGet = Menu.getAllArticles();
+        for (Map.Entry<String, Integer> entry : keywordsMapToGetArticles.entrySet()){
+            //if mentioned in order, get key
+            Integer i = entry.getValue();
+            if (i > 0){
+                var keyString = entry.getKey();
+                if(articlesToGet.containsKey(keyString)){
+                    idsReadFromOrder.add(articlesToGet.get(keyString));
+                }
+            }
+        }
+        return idsReadFromOrder;
     }
 }
