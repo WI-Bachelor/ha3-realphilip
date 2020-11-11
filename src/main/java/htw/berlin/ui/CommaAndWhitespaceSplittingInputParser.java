@@ -12,12 +12,12 @@ public class CommaAndWhitespaceSplittingInputParser implements InputParser {
             // TODO (1) zuerst hier implementieren.
         HashMap<String,Integer> keywordsCounted = new HashMap<>();
         for (String inputKeywords : keywords){
-            if (line.contains(inputKeywords)) {
+            if (line.toUpperCase().contains(inputKeywords.toUpperCase())) {
                 String[] lineSplit = line.split(" ");
                 int inputLength = lineSplit.length;
                 int mainCounter = 0;
                 for (int i = 0; i < inputLength; i++) {
-                    if (lineSplit[i].contains(inputKeywords)) mainCounter++;
+                    if (lineSplit[i].toUpperCase().contains(inputKeywords.toUpperCase())) mainCounter++;
                 }
 //if keyword is included once in input, value = 1, if keyword is included multiple times, value = # of times mentioned, else value = 0
                 if(mainCounter == 1){
