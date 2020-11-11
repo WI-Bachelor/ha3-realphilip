@@ -13,6 +13,7 @@ public class InputParserTest {
 
     @Test
     @DisplayName("should count how often specified keywords occur")
+        //despite display name, the test only tests for keywords that occur on one or no occasions
     void canCountKeywords() {
         InputParser classUnderTest = new CommaAndWhitespaceSplittingInputParser();
         Set<String> keywords = new HashSet<>(Arrays.asList("Rindfleisch", "Eisbergsalat", "Tomate", "Ketchup", "Mayo", "Avocado"));
@@ -26,4 +27,9 @@ public class InputParserTest {
                 "Avocado", 0);
         assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
     }
+
 }
+
+
+
+
