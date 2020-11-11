@@ -15,8 +15,16 @@ public class CommaAndWhitespaceSplittingInputParser implements InputParser {
             if (line.contains(inputKeywords)) {
                 String[] lineSplit = line.split(" ");
                 int inputLength = lineSplit.length;
-//if keyword is included in input, value = 1, else 0
-                keywordsCounted.put(inputKeywords, 1);
+                int mainCounter = 0;
+                for (int i = 0; i < inputLength; i++) {
+                    if (lineSplit[i].contains(inputKeywords)) mainCounter++;
+                }
+//if keyword is included once in input, value = 1, if keyword is included multiple times, value = # of times mentioned, else value = 0
+                if(mainCounter == 1){
+                    keywordsCounted.put(inputKeywords, 1);
+                } else {
+                    keywordsCounted.put(inputKeywords, mainCounter);
+                }
             }else{
                 keywordsCounted.put(inputKeywords, 0);
             }
